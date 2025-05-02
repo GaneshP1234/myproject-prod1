@@ -18,7 +18,7 @@ jobs:
         id: import-secrets
         uses: hashicorp/vault-action@v3
         with:
-          url: https://10.24.151.99:8200
+          url: https://usc1d1k02.ra-int.com:8200
           tlsSkipVerify: true
           method: jwt
           role: myproject-production
