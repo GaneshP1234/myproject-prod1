@@ -1,0 +1,30 @@
+name: proddemo
+# Run this workflow every time a new commit pushed to your repository
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+# Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: self-hosted
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Import Secrets
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: https://10.24.151.99:8200
+          tlsSkipVerify: true
+          method: jwt
+          role: myproject-production
+          secrets: |
+            prod/data/apps_secret app_secret1 | APPSECRET ;
+      - name: Step following 'Import Secrets'
+        run: |
+          $APPSECRET = "${{ env.APPSECRET }}"
+          echo "Stored Output: $APPSECRET"
