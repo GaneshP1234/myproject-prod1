@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Import Secrets
         id: import-secrets
-        uses: hashicorp/vault-action@v2
+        uses: hashicorp/vault-action@v3
         with:
           url: https://10.24.151.99:8200
           tlsSkipVerify: true
