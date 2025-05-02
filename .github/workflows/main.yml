@@ -21,7 +21,7 @@ jobs:
           url: https://10.24.151.99:8200
           tlsSkipVerify: true
           method: jwt
-          outputToken: ${{ github.event.id_token }}
+          token: ${{ ACTIONS_ID_TOKEN_REQUEST_URL  }}
           role: myproject-production
           secrets: |
             prod/data/apps_secret app_secret1 | APPSECRET ;
