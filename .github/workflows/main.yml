@@ -21,6 +21,7 @@ jobs:
           url: https://usc1d1k02.ra-int.com:8200
           tlsSkipVerify: true
           method: jwt
+          path: jwt
           role: myproject-production
           secrets: |
             prod/data/apps_secret app_secret1 | APPSECRET ;
